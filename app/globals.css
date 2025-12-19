@@ -1,0 +1,624 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Unified, professional color palette - minimal but elegant */
+  --background: oklch(0.99 0.002 100);
+  --foreground: oklch(0.15 0.015 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.015 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.015 250);
+
+  /* Primary: Professional blue - trustworthy and clean */
+  --primary: oklch(0.52 0.16 240);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Secondary: Warm gray for subtle accents */
+  --secondary: oklch(0.92 0.008 250);
+  --secondary-foreground: oklch(0.15 0.015 250);
+
+  /* Muted: Subtle background tones */
+  --muted: oklch(0.96 0.005 250);
+  --muted-foreground: oklch(0.45 0.02 250);
+
+  /* Accent: Teal for highlights and engagement */
+  --accent: oklch(0.58 0.14 210);
+  --accent-foreground: oklch(0.99 0 0);
+
+  /* Success: Fresh green */
+  --success: oklch(0.6 0.16 150);
+  --success-foreground: oklch(0.99 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* Clean borders */
+  --border: oklch(0.9 0.005 250);
+  --input: oklch(0.9 0.005 250);
+  --ring: oklch(0.52 0.16 240);
+
+  --chart-1: oklch(0.52 0.16 240);
+  --chart-2: oklch(0.6 0.16 150);
+  --chart-3: oklch(0.58 0.14 210);
+  --chart-4: oklch(0.65 0.12 280);
+  --chart-5: oklch(0.7 0.14 40);
+
+  --radius: 0.75rem;
+
+  --sidebar: oklch(0.99 0.002 100);
+  --sidebar-foreground: oklch(0.15 0.015 250);
+  --sidebar-primary: oklch(0.52 0.16 240);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.005 250);
+  --sidebar-accent-foreground: oklch(0.15 0.015 250);
+  --sidebar-border: oklch(0.9 0.005 250);
+  --sidebar-ring: oklch(0.52 0.16 240);
+}
+
+.dark {
+  --background: oklch(0.12 0.012 250);
+  --foreground: oklch(0.97 0.003 100);
+  --card: oklch(0.15 0.015 250);
+  --card-foreground: oklch(0.97 0.003 100);
+  --popover: oklch(0.15 0.015 250);
+  --popover-foreground: oklch(0.97 0.003 100);
+  --primary: oklch(0.6 0.18 240);
+  --primary-foreground: oklch(0.12 0.012 250);
+  --secondary: oklch(0.2 0.015 250);
+  --secondary-foreground: oklch(0.97 0.003 100);
+  --muted: oklch(0.18 0.012 250);
+  --muted-foreground: oklch(0.6 0.02 250);
+  --accent: oklch(0.65 0.16 210);
+  --accent-foreground: oklch(0.12 0.012 250);
+  --success: oklch(0.65 0.18 150);
+  --success-foreground: oklch(0.12 0.012 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.97 0.003 100);
+  --border: oklch(0.22 0.015 250);
+  --input: oklch(0.22 0.015 250);
+  --ring: oklch(0.6 0.18 240);
+  --sidebar: oklch(0.14 0.012 250);
+  --sidebar-foreground: oklch(0.97 0.003 100);
+  --sidebar-primary: oklch(0.6 0.18 240);
+  --sidebar-primary-foreground: oklch(0.12 0.012 250);
+  --sidebar-accent: oklch(0.18 0.012 250);
+  --sidebar-accent-foreground: oklch(0.97 0.003 100);
+  --sidebar-border: oklch(0.22 0.015 250);
+  --sidebar-ring: oklch(0.6 0.18 240);
+}
+
+@theme inline {
+  --font-sans: "Inter", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Professional, smooth animations */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar for horizontal scrolling on mobile */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 0.7s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  /* Enhanced ambient animations - faster and more dynamic */
+  @keyframes ambient-pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.75;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes ambient-float {
+    0%,
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-60px) translateX(50px) rotate(8deg);
+    }
+    66% {
+      transform: translateY(-40px) translateX(-50px) rotate(-8deg);
+    }
+  }
+
+  @keyframes ambient-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate(-80px, 80px) scale(1.3) rotate(12deg);
+    }
+  }
+
+  /* Modified ambient backgrounds for better visual separation between sections with blue-based color palettes */
+
+  /* Ambient background glow - Hero section with blue/cyan (oceanic) */
+  .ambient-glow {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.98 0.01 230 / 1) 0%, oklch(0.95 0.02 210 / 1) 100%);
+  }
+
+  .ambient-glow::before,
+  .ambient-glow::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  .ambient-glow::before {
+    top: -10%;
+    left: 10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, oklch(0.58 0.2 240 / 0.5), transparent 60%);
+    animation: ambient-pulse 3s ease-in-out infinite, ambient-float 10s ease-in-out infinite;
+  }
+
+  .ambient-glow::after {
+    bottom: -10%;
+    right: 10%;
+    width: 750px;
+    height: 750px;
+    background: radial-gradient(circle, oklch(0.62 0.18 200 / 0.45), transparent 60%);
+    animation: ambient-pulse 3.5s ease-in-out infinite 0.8s, ambient-float 12s ease-in-out infinite reverse;
+  }
+
+  /* Purple ambient glow - Challenge section with blue/violet/magenta (royal) */
+  .ambient-glow-purple {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.96 0.02 270 / 1) 0%, oklch(0.92 0.03 290 / 1) 100%);
+  }
+
+  .ambient-glow-purple::before,
+  .ambient-glow-purple::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(52px);
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  .ambient-glow-purple::before {
+    top: 20%;
+    right: 5%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, oklch(0.55 0.2 250 / 0.55), transparent 60%);
+    animation: ambient-pulse 3.2s ease-in-out infinite 0.3s, ambient-drift 13s ease-in-out infinite;
+  }
+
+  .ambient-glow-purple::after {
+    bottom: 15%;
+    left: 10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, oklch(0.6 0.19 310 / 0.5), transparent 60%);
+    animation: ambient-pulse 3.8s ease-in-out infinite 1.5s, ambient-float 15s ease-in-out infinite reverse;
+  }
+
+  /* Green ambient glow - How it works section with blue/turquoise/teal (fresh) */
+  .ambient-glow-green {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.96 0.025 190 / 1) 0%, oklch(0.93 0.03 170 / 1) 100%);
+  }
+
+  .ambient-glow-green::before,
+  .ambient-glow-green::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(48px);
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  .ambient-glow-green::before {
+    top: 10%;
+    left: 20%;
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, oklch(0.6 0.2 180 / 0.55), transparent 60%);
+    animation: ambient-pulse 3.4s ease-in-out infinite, ambient-drift 11s ease-in-out infinite;
+  }
+
+  .ambient-glow-green::after {
+    bottom: 20%;
+    right: 15%;
+    width: 680px;
+    height: 680px;
+    background: radial-gradient(circle, oklch(0.64 0.18 210 / 0.5), transparent 60%);
+    animation: ambient-pulse 3.7s ease-in-out infinite 1s, ambient-float 13s ease-in-out infinite;
+  }
+
+  /* Added new ambient glow variants for Features and About sections */
+
+  /* Indigo ambient glow - Features section with blue/indigo (deep) */
+  .ambient-glow-indigo {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.95 0.025 250 / 1) 0%, oklch(0.91 0.035 265 / 1) 100%);
+  }
+
+  .ambient-glow-indigo::before,
+  .ambient-glow-indigo::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(51px);
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  .ambient-glow-indigo::before {
+    top: 15%;
+    left: 15%;
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(circle, oklch(0.52 0.21 255 / 0.55), transparent 60%);
+    animation: ambient-pulse 3.1s ease-in-out infinite, ambient-float 12s ease-in-out infinite;
+  }
+
+  .ambient-glow-indigo::after {
+    bottom: 15%;
+    right: 20%;
+    width: 690px;
+    height: 690px;
+    background: radial-gradient(circle, oklch(0.56 0.19 235 / 0.5), transparent 60%);
+    animation: ambient-pulse 3.6s ease-in-out infinite 1.2s, ambient-drift 14s ease-in-out infinite reverse;
+  }
+
+  /* Pink ambient glow - About section with blue/pink/lavender (warm) */
+  .ambient-glow-pink {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.97 0.02 280 / 1) 0%, oklch(0.93 0.028 320 / 1) 100%);
+  }
+
+  .ambient-glow-pink::before,
+  .ambient-glow-pink::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(53px);
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+  }
+
+  .ambient-glow-pink::before {
+    top: 20%;
+    right: 10%;
+    width: 660px;
+    height: 660px;
+    background: radial-gradient(circle, oklch(0.58 0.18 260 / 0.5), transparent 60%);
+    animation: ambient-pulse 3.3s ease-in-out infinite 0.5s, ambient-drift 11.5s ease-in-out infinite;
+  }
+
+  .ambient-glow-pink::after {
+    bottom: 20%;
+    left: 15%;
+    width: 710px;
+    height: 710px;
+    background: radial-gradient(circle, oklch(0.62 0.16 330 / 0.45), transparent 60%);
+    animation: ambient-pulse 3.9s ease-in-out infinite 1.8s, ambient-float 13.5s ease-in-out infinite reverse;
+  }
+
+  /* Shimmer effect for cards */
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-effect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  /* Floating animation */
+  .float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  /* Micro-interactions for buttons */
+  .button-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-glow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .button-glow:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Refined hover effects - consistent across all interactive elements */
+  .card-hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  /* Fixed button hover scale - split into separate properties */
+  .button-hover-scale {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .button-hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  .button-hover-scale:active {
+    transform: scale(0.98);
+  }
+
+  /* Clean glass effect */
+  .glass {
+    @apply bg-background/95 backdrop-blur-sm border-b border-border/50;
+  }
+
+  .glass-card {
+    @apply bg-card/95 backdrop-blur-sm border border-border/50 shadow-sm;
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Grid background for hero sections */
+  .bg-grid-white\/10 {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Added radial gradient utility for hero backgrounds */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
+}
